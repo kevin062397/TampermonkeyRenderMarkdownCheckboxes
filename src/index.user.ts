@@ -11,6 +11,8 @@
 // ==/UserScript==
 
 (() => {
+    const uuid = window.crypto.randomUUID();
+
     const replaceMarkdownCheckboxes = () => {
         document.querySelectorAll("#pull-request-description-panel .ak-renderer-wrapper ul li").forEach((listItem) => {
             const paragraphItem = listItem.querySelector("p");
@@ -29,14 +31,14 @@
             let match = text.match(uncheckedRegex);
             if (match) {
                 const label = match[1];
-                paragraphItem.innerHTML = `<input class="styled-checkbox" type="checkbox" disabled /> ${label}`;
+                paragraphItem.innerHTML = `<input class="checkbox-${uuid}" type="checkbox" disabled /> ${label}`;
                 return;
             }
 
             match = text.match(checkedRegex);
             if (match) {
                 const label = match[1];
-                paragraphItem.innerHTML = `<input class="styled-checkbox" type="checkbox" checked disabled /> ${label}`;
+                paragraphItem.innerHTML = `<input class="checkbox-${uuid}" type="checkbox" checked disabled /> ${label}`;
             }
         });
     };
@@ -44,7 +46,7 @@
     // Add custom styles to make checkboxes more prominent
     const style = document.createElement("style");
     style.textContent = `
-        input.styled-checkbox {
+        .checkbox-${uuid} {
             --tint-color: rgba(0, 122, 255, 1);
             --separator-color: rgba(60, 60, 67, 0.29);
             /* Color scheme independent properties */
@@ -53,13 +55,13 @@
         }
 
         @media (prefers-color-scheme: dark) {
-            input.styled-checkbox {
+            .checkbox-${uuid} {
                 --tint-color: rgba(10, 132, 255, 1);
                 --separator-color: rgba(84, 84, 88, 0.6);
             }
         }
 
-        input.styled-checkbox {
+        .checkbox-${uuid} {
             appearance: none;
             background-color: var(--clear-color);
             border-radius: 25%;
@@ -73,11 +75,11 @@
             width: 1em;
         }
 
-        input.styled-checkbox:checked {
+        .checkbox-${uuid}:checked {
             background-color: var(--tint-color);
         }
 
-        input.styled-checkbox::before {
+        .checkbox-${uuid}::before {
             color: var(--white-color);
             content: "\\2713"; /* Unicode check mark */
             display: block;
@@ -87,7 +89,7 @@
             visibility: hidden;
         }
 
-        input.styled-checkbox:checked::before {
+        .checkbox-${uuid}:checked::before {
             visibility: visible;
         }
     `;

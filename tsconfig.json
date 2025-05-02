@@ -1,0 +1,15 @@
+{
+    "compilerOptions": {
+        "lib": ["DOM", "DOM.Iterable", "ESNext"],
+        "module": "None",
+        "noFallthroughCasesInSwitch": true,
+        "noImplicitAny": true,
+        "noUnusedLocals": true,
+        "noUnusedParameters": true,
+        "outDir": "dist",
+        "skipLibCheck": true,
+        "strict": true,
+        "target": "ES6"
+    },
+    "include": ["src"]
+}

@@ -5,7 +5,7 @@
 // @grant        none
 // @match        https://bitbucket.org/*/pull-requests/*
 // @namespace    http://tampermonkey.net/
-// @version      1.0.0
+// @version      1.1.0
 // ==/UserScript==
 
 (() => {

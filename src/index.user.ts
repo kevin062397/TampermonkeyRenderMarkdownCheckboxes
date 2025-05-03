@@ -95,6 +95,7 @@
         .checkbox-${uuid} {
             --tint-color: rgba(0, 122, 255, 1);
             --separator-color: rgba(60, 60, 67, 0.29);
+            --gray-color: rgba(142, 142, 147, 1);
             /* Color scheme independent properties */
             --clear-color: transparent;
             --white-color: rgba(255, 255, 255, 1);
@@ -104,6 +105,7 @@
             .checkbox-${uuid} {
                 --tint-color: rgba(10, 132, 255, 1);
                 --separator-color: rgba(84, 84, 88, 0.6);
+                --gray-color: rgba(142, 142, 147, 1);
             }
         }
 
@@ -122,7 +124,7 @@
         }
 
         .checkbox-${uuid}:checked {
-            background-color: var(--tint-color);
+            background-color: var(--gray-color);
         }
 
         .checkbox-${uuid}::before {

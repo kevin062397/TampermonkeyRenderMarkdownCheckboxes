@@ -43,8 +43,30 @@
         });
     };
 
+    const minifyCSS = (css: string): string => {
+        return css
+            .replace(/\/\*[\s\S]*?\*\//g, "") // Remove comments
+            .replace(/\s*([\{\}:;,])\s*/g, "$1") // Remove spaces around symbols
+            .replace(/\n/g, "") // Remove new lines
+            .replace(/\s{2,}/g, " ") // Collapse multiple spaces
+            .trim();
+    };
+
+    const minifySVG = (svg: string): string => {
+        return svg
+            .replace(/<!--[\s\S]*?-->/g, "") // Remove comments
+            .replace(/<style[^>]*>([\s\S]*?)<\/style>/gi, (_match, css) => {
+                return `<style>${minifyCSS(css)}</style>`; // Minify inline CSS
+            })
+            .replace(/\s*\n\s*/g, "") // Remove newlines and surrounding spaces
+            .replace(/\s{2,}/g, " ") // Collapse multiple spaces
+            .replace(/>\s+</g, "><") // Remove spaces between tags
+            .trim();
+    };
+
     const svgToDataURL = (svg: string): string => {
-        const encoded = encodeURIComponent(svg);
+        const minifiedSVG = minifySVG(svg);
+        const encoded = encodeURIComponent(minifiedSVG);
         return `data:image/svg+xml,${encoded}`;
     };
 

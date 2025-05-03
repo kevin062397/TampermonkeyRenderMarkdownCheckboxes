@@ -43,6 +43,30 @@
         });
     };
 
+    const svgToDataURL = (svg: string): string => {
+        const encoded = encodeURIComponent(svg);
+        return `data:image/svg+xml,${encoded}`;
+    };
+
+    const checkMarkSVG = `
+        <?xml version="1.0" encoding="UTF-8"?>
+        <svg id="Layer_1" xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 16 16">
+            <!-- Generator: Adobe Illustrator 29.3.1, SVG Export Plug-In . SVG Version: 2.1.0 Build 151)  -->
+            <defs>
+                <style>
+                .st0 {
+                    fill: none;
+                    stroke: #fff;
+                    stroke-linecap: round;
+                    stroke-linejoin: round;
+                    stroke-width: 2px;
+                }
+                </style>
+            </defs>
+            <polyline class="st0" points="3.5 8 6.5 11 12.5 5"/>
+        </svg>
+    `;
+
     // Add custom styles to make checkboxes more prominent
     const style = document.createElement("style");
     style.textContent = `
@@ -80,13 +104,13 @@
         }
 
         .checkbox-${uuid}::before {
-            color: var(--white-color);
-            content: "\\2713"; /* Unicode check mark */
+            content: url("${svgToDataURL(checkMarkSVG)}");
             display: block;
-            font-size: 0.8em;
-            line-height: calc(1.25em - 2px);
-            text-align: center;
+            height: 1em;
+            line-height: 1em;
+            margin: -1px;
             visibility: hidden;
+            width: 1em;
         }
 
         .checkbox-${uuid}:checked::before {

@@ -91,7 +91,7 @@
 
     // Add custom styles to make checkboxes more prominent
     const style = document.createElement("style");
-    style.textContent = `
+    style.textContent = minifyCSS(`
         .checkbox-${uuid} {
             --tint-color: rgba(0, 122, 255, 1);
             --separator-color: rgba(60, 60, 67, 0.29);
@@ -138,7 +138,7 @@
         .checkbox-${uuid}:checked::before {
             visibility: visible;
         }
-    `;
+    `);
     document.head.appendChild(style);
 
     // Run on page load

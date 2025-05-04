@@ -116,7 +116,7 @@
             background-color: var(--clear-color);
             border-radius: 25%;
             border: 1px solid var(--separator-color);
-            cursor: default;
+            cursor: pointer;
             display: inline-block;
             font-size: 1em;
             height: 1em;
@@ -126,7 +126,15 @@
         }
 
         .checkbox-${uuid}:checked {
+            background-color: var(--tint-color);
+        }
+
+        .checkbox-${uuid}:checked:disabled {
             background-color: var(--gray-color);
+        }
+
+        .checkbox-${uuid}:disabled {
+            cursor: default;
         }
 
         .checkbox-${uuid}::before {

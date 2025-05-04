@@ -31,14 +31,16 @@
             let match = text.match(uncheckedRegex);
             if (match) {
                 const label = match[1];
-                paragraphItem.innerHTML = `<input class="checkbox-${uuid}" type="checkbox" disabled /> ${label}`;
+                // The space between `<input>` and `<span>` is used as a gap in browsers that do not support `:has(*)`
+                paragraphItem.innerHTML = `<input class="checkbox-${uuid}" type="checkbox" disabled /> <span>${label}</span>`;
                 return;
             }
 
             match = text.match(checkedRegex);
             if (match) {
                 const label = match[1];
-                paragraphItem.innerHTML = `<input class="checkbox-${uuid}" type="checkbox" checked disabled /> ${label}`;
+                // The space between `<input>` and `<span>` is used as a gap in browsers that do not support `:has(*)`
+                paragraphItem.innerHTML = `<input class="checkbox-${uuid}" type="checkbox" checked disabled /> <span>${label}</span>`;
             }
         });
     };
@@ -140,6 +142,25 @@
         .checkbox-${uuid}:checked::before {
             visibility: visible;
         }
+
+        @supports selector(:has(*)) {
+            li:has(.checkbox-${uuid}) {
+                list-style-type: none;
+                margin-inline-start: -24px;
+            }
+
+            li p:has(.checkbox-${uuid}) {
+                align-items: start;
+                display: flex;
+                gap: 0.5em;
+                line-height: 1.5em;
+            }
+
+            .checkbox-${uuid} {
+                margin-top: 0.25em;
+            }
+        }
+
     `);
     document.head.appendChild(style);
 

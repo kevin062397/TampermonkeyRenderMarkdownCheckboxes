@@ -8,14 +8,14 @@
 // @include      https://bitbucket.org/*/pull-requests/
 // @include      https://bitbucket.org/*/pull-requests/*
 // @exclude      https://bitbucket.org/*/pull-requests/new
-// @namespace    http://tampermonkey.net/
+// @namespace    https://github.com/kevin062397/TampermonkeyRenderMarkdownCheckboxes
 // @version      1.7.0
 // ==/UserScript==
 
 (() => {
     const uuid = window.crypto.randomUUID();
 
-    const replaceMarkdownCheckboxes = () => {
+    const replaceMarkdownCheckboxes = (): void => {
         document.querySelectorAll("#pull-request-description-panel .ak-renderer-wrapper ul li").forEach((listItem) => {
             const paragraphItem = listItem.querySelector("p");
             if (!paragraphItem) {

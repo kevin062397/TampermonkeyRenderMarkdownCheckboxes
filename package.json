@@ -3,7 +3,7 @@
     "version": "0.0.0",
     "license": "UNLICENSED",
     "private": true,
-    "repository": "https://github.com/kevin062397/TampermonkeyRenderMarkdownCheckboxes.git",
+    "repository": "https://github.com/kevin062397/TampermonkeyRenderMarkdownCheckboxes",
     "scripts": {
         "build": "tsc",
         "check-format": "prettier --check .",

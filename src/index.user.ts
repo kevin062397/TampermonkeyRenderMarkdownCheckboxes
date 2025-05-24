@@ -9,7 +9,7 @@
 // @include      https://bitbucket.org/*/pull-requests/*
 // @exclude      https://bitbucket.org/*/pull-requests/new
 // @namespace    https://github.com/kevin062397/TampermonkeyRenderMarkdownCheckboxes
-// @version      1.7.0
+// @version      1.7.1
 // ==/UserScript==
 
 (() => {

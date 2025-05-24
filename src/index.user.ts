@@ -25,8 +25,8 @@
                 return;
             }
 
-            const uncheckedRegex = /^\[ \]\s(.*)/i; // Matches "- [ ] Task"
-            const checkedRegex = /^\[x\]\s(.*)/i; // Matches "- [x] Task"
+            const uncheckedRegex = /^\[ \]\s([\s\S]*)/i; // Matches "- [ ] Task"
+            const checkedRegex = /^\[x\]\s([\s\S]*)/i; // Matches "- [x] Task"
 
             let match = text.match(uncheckedRegex);
             if (match) {
